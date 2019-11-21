@@ -53,6 +53,11 @@ const containStyle = {
   alignItems: 'center'
 };
 
+const clickHandle = courseIdx => {
+  console.log('clickHandle');
+  window.location = '/apply?courseIdx=' + courseIdx;
+};
+
 const LectContain = () => {
   const [isLoaded, setLoaded] = useState(false);
   const [course, setCourse] = useState([]);
@@ -168,6 +173,9 @@ const LectContain = () => {
               date={data.operTime}
               doDate={data.lectTime}
               key={data.courseIdx}
+              onclick={() => {
+                clickHandle(data.courseIdx);
+              }}
             />
           ))}
         </div>
