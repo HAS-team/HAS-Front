@@ -4,15 +4,17 @@ import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Login from './Login.jsx';
+import LectContain from './Common/Component/LectContain';
 
 function App() {
   return (
-    <div>
+    <div style={{ height: '100%' }}>
       {/* <h1>App page</h1> */}
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
           <Route path="/" component={Login} exact={true} />
+          <Route path="/LectLists" component={LectContain} exact={true} />
           <Route
             render={({ location }) => (
               <div>
