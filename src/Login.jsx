@@ -4,7 +4,8 @@ import bgWave3 from './Assets/bg_wave_3.png';
 import logo from './Assets/logo1.png';
 import styled from 'styled-components';
 import axios from 'axios';
-
+import { withRouter } from 'react-router-dom';
+// import { ReactComponent } from '*.svg';
 const DOMAIN = 'http://www.gsmboard.kr/';
 
 const BGImage = styled.img`
@@ -111,19 +112,23 @@ const ClickHandle = () => {
     if (res.status === 200) {
       alert('로그인 성공');
       console.log(res.data);
-
-      if (res.data.is_admin) alert('관리자 계정입니다.');
-      else alert('일반 계정입니다.');
-
       localStorage.setItem('token', res.data.token);
-      window.location = '/LectLists';
+
+      if (res.data.is_admin) {
+        alert('관리자 계정입니다.');
+        window.location = '/lect/admin';
+      } else {
+        alert('일반 계정입니다.');
+        window.location = '/lect/user';
+      }
     } else {
       alert('로그인 실패');
     }
   });
 };
 
-const Login = props => {
+const Login = (props, isLogin) => {
+  console.log(props);
   return (
     <div>
       <LogoDiv>
@@ -154,5 +159,4 @@ const Login = props => {
     </div>
   );
 };
-
-export default Login;
+export default withRouter(Login);

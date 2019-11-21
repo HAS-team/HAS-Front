@@ -43,10 +43,7 @@ const Apply = ({ location }) => {
           <ApplyContent infoName="대상학년" infoContent={applyInfo.target} />
           <ApplyContent infoName="운영기간" infoContent={applyInfo.operTime} />
           <ApplyContent infoName="강의시간" infoContent={applyInfo.totalTime} />
-          <ApplyContent
-            infoName="담당선생님"
-            infoContent={applyInfo.TeacherName}
-          />
+          <ApplyContent infoName="담당선생님" infoContent={applyInfo.teacher} />
           <ApplyContent infoName="총시수" infoContent={applyInfo.capacity} />
         </S.ContentContainerLeft>
         <S.ContentContainerRight>
