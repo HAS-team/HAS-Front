@@ -48,9 +48,13 @@ const dummys = [
 
 const containStyle = {
   height: '100%',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center'
+  marginLeft: '10rem',
+  marginRight: '10rem',
+  marginTop: '3rem',
+  marginBottom: '3rem'
+  //   display: 'flex',
+  //   justifyContent: 'center',
+  //   alignItems: 'center'
 };
 
 const clickHandle = (e, courseIdx) => {
@@ -169,6 +173,7 @@ const LectContain = () => {
               onClick={e => {
                 clickHandle(e, data.courseIdx);
               }}
+              key={data.courseIdx}
             >
               <Lect
                 askState={data.status}
@@ -178,7 +183,6 @@ const LectContain = () => {
                 grade={data.target}
                 date={data.operTime}
                 doDate={data.lectTime}
-                key={data.courseIdx}
               />
             </a>
           ))}
