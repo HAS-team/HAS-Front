@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
@@ -8,9 +8,6 @@ import Apply from './Common/Component/Apply/Apply';
 import LectContain from './Common/Component/LectContain';
 import Header from './Common/Component/Header/Header.jsx';
 
-const changeHandle = () => {
-  console.log('changeHandle');
-};
 function App() {
   return (
     <div style={{ height: '100%' }}>
@@ -19,9 +16,11 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={Login} exact={true} />
+          {/* <Route path="/" component={Login} exact={true} isLogin={'123123'} />
+           */}
+          <Route path="/" render={() => <Login isLogin={123} />} />
           <Route path="/apply" component={Apply} exect={true} />
-          <Route path="/LectLists" component={LectContain} exact={true} />
+          <Route path="/lect/:usermod" component={LectContain} exact={true} />
           <Route
             render={({ location }) => (
               <div>

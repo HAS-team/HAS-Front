@@ -3,6 +3,7 @@ import Lect from './Lect';
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import axios from 'axios';
+import qs from 'query-string';
 
 const DOMAIN = 'http://www.gsmboard.kr/';
 
@@ -62,12 +63,14 @@ const clickHandle = (e, courseIdx) => {
   window.location = '/apply?courseIdx=' + courseIdx;
 };
 
-const LectContain = () => {
+const LectContain = ({ match }) => {
   const [isLoaded, setLoaded] = useState(false);
   const [course, setCourse] = useState([]);
 
+  const { usermod } = match.params;
+  console.log(usermod);
+
   useEffect(() => {
-    console.log('LectContain useEffect');
     const token = localStorage.getItem('token');
     axios
       .get(DOMAIN + 'api/course/list', {
