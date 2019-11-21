@@ -21,6 +21,12 @@ const Apply = () => {
 
   return (
     <div>
+      <S.InfoHeader>
+        <S.InfoTitle>{dummy.name}</S.InfoTitle>
+        <S.ApplicationStatus>
+          {dummy.status === 1 ? '신청됨' : '신청안됨'}
+        </S.ApplicationStatus>
+      </S.InfoHeader>
       <S.ContentContainer>
         <S.ContentContainerLeft>
           <ApplyContent infoName="구분" infoContent={dummy.sort} />
