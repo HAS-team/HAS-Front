@@ -14,7 +14,7 @@ const Apply = ({ location }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://www.gsmboard.kr/api/course/detail?course_id=1`,
+          `http://www.gsmboard.kr/api/course/detail?course_id=${query}`,
           {
             headers: {
               token: token
@@ -28,7 +28,7 @@ const Apply = ({ location }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [query]);
   return (
     <div>
       <S.InfoHeader>
