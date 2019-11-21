@@ -1,5 +1,5 @@
 import React from 'react';
-import ApplyContent from '../../ApplyContent/ApplyContent';
+import ApplyContent from '../ApplyContent/ApplyContent';
 import * as S from './style';
 
 const Apply = () => {
