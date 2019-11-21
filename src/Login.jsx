@@ -93,42 +93,40 @@ const InputDiv = styled.div`
   margin-top: 2rem;
 `;
 
-const ClickHandle = () => {
-  alert('ClickHandle()');
+const Login = ({ yesAdmin }) => {
+  const ClickHandle = () => {
+    const inputMail = document.querySelector('#inputMail').value;
+    const inputPw = document.querySelector('#inputPw').value;
 
-  const inputMail = document.querySelector('#inputMail').value;
-  const inputPw = document.querySelector('#inputPw').value;
+    const req = {
+      email: inputMail,
+      password: inputPw
+    };
 
-  const req = {
-    email: inputMail,
-    password: inputPw
+    console.log(req);
+
+    axios.post(DOMAIN + 'api/auth/login', req).then(res => {
+      console.log(res);
+
+      if (res.status === 200) {
+        alert('로그인 성공');
+        console.log(res.data);
+        localStorage.setItem('token', res.data.token);
+
+        if (res.data.is_admin) {
+          alert('관리자 계정입니다.');
+          yesAdmin();
+          window.location = '/lect/admin';
+        } else {
+          alert('일반 계정입니다.');
+          window.location = '/lect/user';
+        }
+      } else {
+        alert('로그인 실패');
+      }
+    });
   };
 
-  console.log(req);
-
-  axios.post(DOMAIN + 'api/auth/login', req).then(res => {
-    console.log(res);
-
-    if (res.status === 200) {
-      alert('로그인 성공');
-      console.log(res.data);
-      localStorage.setItem('token', res.data.token);
-
-      if (res.data.is_admin) {
-        alert('관리자 계정입니다.');
-        window.location = '/lect/admin';
-      } else {
-        alert('일반 계정입니다.');
-        window.location = '/lect/user';
-      }
-    } else {
-      alert('로그인 실패');
-    }
-  });
-};
-
-const Login = (props, isLogin) => {
-  console.log(props);
   return (
     <div>
       <LogoDiv>

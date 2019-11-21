@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
@@ -9,16 +9,28 @@ import LectContain from './Common/Component/LectContain';
 import Header from './Common/Component/Header/Header.jsx';
 
 function App() {
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const yesAdmin = () => {
+    setIsAdmin(true);
+  };
+
+  useEffect(() => {
+    console.log('useEffect');
+  }, [isAdmin]);
+
   return (
     <div style={{ height: '100%' }}>
       {/* <h1>App page</h1> */}
-      <Header />
+      <Header isAdmin={isAdmin} />
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
-          {/* <Route path="/" component={Login} exact={true} isLogin={'123123'} />
-           */}
-          <Route path="/" render={() => <Login isLogin={123} />} />
+          <Route
+            path="/"
+            render={() => <Login yesAdmin={yesAdmin} />}
+            exact={true}
+          />
           <Route path="/apply" component={Apply} exect={true} />
           <Route path="/lect/:usermod" component={LectContain} exact={true} />
           <Route
