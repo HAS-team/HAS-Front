@@ -4,6 +4,7 @@ import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Login from './Login.jsx';
+import Apply from './Common/Component/Apply/Apply';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/" component={Login} exact={true} />
+          <Route path="/apply" component={Apply} exect={true} />
           <Route
             render={({ location }) => (
               <div>
