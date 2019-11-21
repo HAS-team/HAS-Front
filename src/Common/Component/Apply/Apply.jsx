@@ -1,45 +1,54 @@
-import React from 'react';
-import ApplyContent from '../../ApplyContent/ApplyContent';
+import React, { useState, useEffect } from 'react';
+import ApplyContent from '../ApplyContent/ApplyContent';
 import * as S from './style';
+import axios from 'axios';
 
 const Apply = () => {
-  const dummy = {
-    TeacherName: '신은주',
-    sort: '2019 2학기',
-    name: '광주소프트웨어마이스터고등학교.',
-    target: '123',
-    capacity: 80,
-    studentSize: 0,
-    lectTime: '목',
-    operTime: '2019-12-12 99:99 ~ 22:22',
-    totalTime: 999,
-    content: 'helloworld',
-    openTime: '2019-10-11 12:00:00',
-    closeTime: '2019-12-30 12:00:00',
-    status: 1
-  };
-
+  const [applyInfo, setApplyInfo] = useState({});
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://www.gsmboard.kr/api/course/detail?course_id=1`,
+          {
+            headers: {
+              token: token
+            }
+          }
+        );
+        console.log(response);
+        setApplyInfo(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div>
       <S.InfoHeader>
-        <S.InfoTitle>{dummy.name}</S.InfoTitle>
+        <S.InfoTitle>{applyInfo.name}</S.InfoTitle>
         <S.ApplicationStatus>
-          {dummy.status === 1 ? '신청됨' : '신청안됨'}
+          {applyInfo.status === 1 ? '신청됨' : '신청안됨'}
         </S.ApplicationStatus>
       </S.InfoHeader>
       <S.ContentContainer>
         <S.ContentContainerLeft>
-          <ApplyContent infoName="구분" infoContent={dummy.sort} />
-          <ApplyContent infoName="대상학년" infoContent={dummy.target} />
-          <ApplyContent infoName="운영기간" infoContent={dummy.operTime} />
-          <ApplyContent infoName="강의시간" infoContent={dummy.totalTime} />
-          <ApplyContent infoName="담당선생님" infoContent={dummy.TeacherName} />
-          <ApplyContent infoName="총시수" infoContent={dummy.capacity} />
+          <ApplyContent infoName="구분" infoContent={applyInfo.sort} />
+          <ApplyContent infoName="대상학년" infoContent={applyInfo.target} />
+          <ApplyContent infoName="운영기간" infoContent={applyInfo.operTime} />
+          <ApplyContent infoName="강의시간" infoContent={applyInfo.totalTime} />
+          <ApplyContent
+            infoName="담당선생님"
+            infoContent={applyInfo.TeacherName}
+          />
+          <ApplyContent infoName="총시수" infoContent={applyInfo.capacity} />
         </S.ContentContainerLeft>
         <S.ContentContainerRight>
-          <ApplyContent infoName="인원" infoContent={dummy.studentSize} />
-          <ApplyContent infoName="신청기간" infoContent={dummy.closeTime} />
-          <ApplyContent infoName="설명" infoContent={dummy.content} />
+          <ApplyContent infoName="인원" infoContent={applyInfo.studentSize} />
+          <ApplyContent infoName="신청기간" infoContent={applyInfo.closeTime} />
+          <ApplyContent infoName="설명" infoContent={applyInfo.content} />
         </S.ContentContainerRight>
       </S.ContentContainer>
     </div>
