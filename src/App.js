@@ -5,9 +5,12 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Login from './Login.jsx';
 
+import Header from './Common/Component/Header/Header.jsx';
+
 function App() {
   return (
     <div>
+      <Header />
       {/* <h1>App page</h1> */}
       <GlobalStyle />
       <BrowserRouter>
