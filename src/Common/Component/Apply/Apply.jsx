@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import ApplyContent from '../ApplyContent/ApplyContent';
 import * as S from './style';
 import axios from 'axios';
+import qs from 'query-string';
 
-const Apply = () => {
+const Apply = ({ location }) => {
+  const query = qs.parse(location);
+  console.log(location);
+  console.log(query);
   const [applyInfo, setApplyInfo] = useState({});
   useEffect(() => {
     const token = localStorage.getItem('token');
