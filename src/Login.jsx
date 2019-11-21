@@ -123,7 +123,7 @@ const ClickHandle = () => {
   });
 };
 
-const Login = () => {
+const Login = props => {
   return (
     <div>
       <LogoDiv>

@@ -16,8 +16,7 @@ const LectList = ({
   lecName,
   teacher,
   grade,
-  startDate,
-  endDate,
+  date,
   doDate
 }) => {
   return (
@@ -71,8 +70,7 @@ const LectList = ({
                 color: '#bdbdbd'
               }}
             >
-              <p>{startDate}~</p>
-              <p>{endDate}</p>
+              {date}
             </td>
             <td
               style={{

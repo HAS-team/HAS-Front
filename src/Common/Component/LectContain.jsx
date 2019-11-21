@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Lect from './Lect';
 import styled from 'styled-components';
 import { useEffect } from 'react';
@@ -54,13 +54,29 @@ const containStyle = {
 };
 
 const LectContain = () => {
+  const [isLoaded, setLoaded] = useState(false);
+  const [course, setCourse] = useState([]);
+
   useEffect(() => {
     console.log('LectContain useEffect');
-    axios.get(DOMAIN + 'api/course/list').then(res => {
-      console.log(res);
-      console.log(res.data);
-    });
-  });
+    const token = localStorage.getItem('token');
+    axios
+      .get(DOMAIN + 'api/course/list', {
+        headers: {
+          token: token
+        }
+      })
+      .then(res => {
+        setLoaded(true);
+        console.log(res);
+        console.log(res.data);
+        const courses = res.data.courses.concat([]);
+        console.log(courses);
+        setCourse(courses);
+      });
+  }, []);
+
+  if (!isLoaded) return <p>로딩 중...</p>;
 
   return (
     <>
@@ -142,16 +158,16 @@ const LectContain = () => {
               </tr>
             </thead>
           </Table>
-          {dummys.map(data => (
+          {course.map(data => (
             <Lect
-              askState={data.askState}
-              seme={data.seme}
-              lecName={data.lecName}
+              askState={data.status}
+              seme={data.sort}
+              lecName={data.name}
               teacher={data.teacher}
-              grade={data.grade}
-              startDate={data.startDate}
-              endDate={data.endDate}
-              doDate={data.doDate}
+              grade={data.target}
+              date={data.operTime}
+              doDate={data.lectTime}
+              key={data.courseIdx}
             />
           ))}
         </div>
