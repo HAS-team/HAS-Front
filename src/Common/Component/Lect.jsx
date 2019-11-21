@@ -16,8 +16,8 @@ const LectList = ({
   lecName,
   teacher,
   grade,
-  date,
-  doDate
+  doDate,
+  date
 }) => {
   return (
     <div>

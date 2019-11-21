@@ -53,8 +53,8 @@ const containStyle = {
   alignItems: 'center'
 };
 
-const clickHandle = courseIdx => {
-  console.log('clickHandle');
+const clickHandle = (e, courseIdx) => {
+  e.preventDefault();
   window.location = '/apply?courseIdx=' + courseIdx;
 };
 
@@ -164,19 +164,23 @@ const LectContain = () => {
             </thead>
           </Table>
           {course.map(data => (
-            <Lect
-              askState={data.status}
-              seme={data.sort}
-              lecName={data.name}
-              teacher={data.teacher}
-              grade={data.target}
-              date={data.operTime}
-              doDate={data.lectTime}
-              key={data.courseIdx}
-              onclick={() => {
-                clickHandle(data.courseIdx);
+            <a
+              href="#"
+              onClick={e => {
+                clickHandle(e, data.courseIdx);
               }}
-            />
+            >
+              <Lect
+                askState={data.status}
+                seme={data.sort}
+                lecName={data.name}
+                teacher={data.teacher}
+                grade={data.target}
+                date={data.operTime}
+                doDate={data.lectTime}
+                key={data.courseIdx}
+              />
+            </a>
           ))}
         </div>
       </div>
