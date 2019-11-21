@@ -5,16 +5,23 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Login from './Login.jsx';
 import Apply from './Common/Component/Apply/Apply';
+import LectContain from './Common/Component/LectContain';
+import Header from './Common/Component/Header/Header.jsx';
 
+const changeHandle = () => {
+  console.log('changeHandle');
+};
 function App() {
   return (
-    <div>
+    <div style={{ height: '100%' }}>
       {/* <h1>App page</h1> */}
+      <Header />
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
           <Route path="/" component={Login} exact={true} />
           <Route path="/apply" component={Apply} exect={true} />
+          <Route path="/LectLists" component={LectContain} exact={true} />
           <Route
             render={({ location }) => (
               <div>
