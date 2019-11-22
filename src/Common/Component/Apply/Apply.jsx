@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import ApplyContent from '../ApplyContent/ApplyContent';
 import * as S from './style';
 import axios from 'axios';
-import qs from 'query-string';
+import queryString from 'query-string';
+import Header from '../Header/Header';
 
 const Apply = ({ location }) => {
-  const query = qs.parse(location);
-  console.log(location);
-  console.log(query);
+  const query = queryString.parse(location.search);
+  console.log(query.courseIdx);
   const [applyInfo, setApplyInfo] = useState({});
   useEffect(() => {
     const token = localStorage.getItem('token');
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://www.gsmboard.kr/api/course/detail?course_id=${query}`,
+          `http://www.gsmboard.kr/api/course/detail?course_id=${query.courseIdx}`,
           {
             headers: {
               token: token
@@ -31,6 +31,7 @@ const Apply = ({ location }) => {
   }, [query]);
   return (
     <div>
+      <Header />
       <S.InfoHeader>
         <S.InfoTitle>{applyInfo.name}</S.InfoTitle>
         <S.ApplicationStatus>

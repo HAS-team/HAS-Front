@@ -7,31 +7,18 @@ import Login from './Login.jsx';
 import Apply from './Common/Component/Apply/Apply';
 import LectContain from './Common/Component/LectContain';
 import Header from './Common/Component/Header/Header.jsx';
+import Bgwave from './Bgwave';
 
 function App() {
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  const yesAdmin = () => {
-    setIsAdmin(true);
-  };
-
-  useEffect(() => {
-    console.log('useEffect');
-  }, [isAdmin]);
-
   return (
     <div style={{ height: '100%' }}>
       {/* <h1>App page</h1> */}
-      <Header isAdmin={isAdmin} />
       <GlobalStyle />
+      <Bgwave />
       <BrowserRouter>
         <Switch>
-          <Route
-            path="/"
-            render={() => <Login yesAdmin={yesAdmin} />}
-            exact={true}
-          />
-          <Route path="/apply" component={Apply} exect={true} />
+          <Route path="/" render={() => <Login />} exact={true} />
+          <Route path="/apply" component={Apply} exact={true} />
           <Route path="/lect/:usermod" component={LectContain} exact={true} />
           <Route
             render={({ location }) => (

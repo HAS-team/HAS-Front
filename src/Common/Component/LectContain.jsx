@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useEffect } from 'react';
 import axios from 'axios';
 import qs from 'query-string';
+import Header from './Header/Header';
 
 const DOMAIN = 'http://www.gsmboard.kr/';
 
@@ -92,6 +93,7 @@ const LectContain = ({ match }) => {
 
   return (
     <>
+      <Header />
       <div style={containStyle}>
         <div>
           <Table>
@@ -167,27 +169,31 @@ const LectContain = ({ match }) => {
                 >
                   강의시간
                 </th>
+                <th
+                  style={{
+                    width: '120px',
+                    height: '50px',
+                    color: '#707070',
+                    fontSize: '1.3rem'
+                  }}
+                >
+                  삭제
+                </th>
               </tr>
             </thead>
           </Table>
           {course.map(data => (
-            <a
-              href="#"
-              onClick={e => {
-                clickHandle(e, data.courseIdx);
-              }}
+            <Lect
+              askState={data.status}
+              seme={data.sort}
+              lecName={data.name}
+              teacher={data.teacher}
+              grade={data.target}
+              date={data.operTime}
+              doDate={data.lectTime}
+              courseIdx={data.courseIdx}
               key={data.courseIdx}
-            >
-              <Lect
-                askState={data.status}
-                seme={data.sort}
-                lecName={data.name}
-                teacher={data.teacher}
-                grade={data.target}
-                date={data.operTime}
-                doDate={data.lectTime}
-              />
-            </a>
+            />
           ))}
         </div>
       </div>

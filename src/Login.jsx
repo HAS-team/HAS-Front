@@ -93,7 +93,7 @@ const InputDiv = styled.div`
   margin-top: 2rem;
 `;
 
-const Login = ({ yesAdmin }) => {
+const Login = () => {
   const ClickHandle = () => {
     const inputMail = document.querySelector('#inputMail').value;
     const inputPw = document.querySelector('#inputPw').value;
@@ -115,7 +115,6 @@ const Login = ({ yesAdmin }) => {
 
         if (res.data.is_admin) {
           alert('관리자 계정입니다.');
-          yesAdmin();
           window.location = '/lect/admin';
         } else {
           alert('일반 계정입니다.');
