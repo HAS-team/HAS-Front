@@ -1,5 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+
+const deleteClickHandle = courseIdx => {
+  const choice = window.confirm('삭제하시겠습니까?');
+  if (choice) {
+    alert(`${courseIdx}번 강좌를 삭제하겠습니다`);
+
+    axios
+      .delete(
+        `http://www.gsmboard.kr/api/course/delete?course_id=${courseIdx}`,
+        {
+          headers: {
+            Token: localStorage.getItem('token')
+          }
+        }
+      )
+      .then(res => {
+        console.log(res.status);
+
+        if (res.status === 200) {
+          alert(`${courseIdx}번 강좌 삭제 성공`);
+          window.location.reload();
+        } else alert('삭제 실패');
+      });
+  }
+};
+
+const lectClickHandle = (e, courseIdx) => {
+  e.preventDefault();
+  window.location = '/apply?courseIdx=' + courseIdx;
+};
 
 const Table = styled.table`
   width: 100%;
@@ -10,6 +41,14 @@ const Table = styled.table`
   text-align: center;
 `;
 
+const Button = styled.button`
+  all: unset;
+  border: 1px solid #707070;
+  padding: 5px;
+  color: #707070;
+  border-radius: 6px;
+`;
+
 const LectList = ({
   askState,
   seme,
@@ -17,7 +56,8 @@ const LectList = ({
   teacher,
   grade,
   doDate,
-  date
+  date,
+  courseIdx
 }) => {
   return (
     <div>
@@ -30,7 +70,7 @@ const LectList = ({
                 color: '#bdbdbd'
               }}
             >
-              {askState}
+              {askState === 1 ? '신청가능' : '신청불가'}
             </td>
             <td
               style={{
@@ -46,7 +86,14 @@ const LectList = ({
                 color: '#bdbdbd'
               }}
             >
-              {lecName}
+              <a
+                href="#"
+                onClick={e => {
+                  lectClickHandle(e, courseIdx);
+                }}
+              >
+                {lecName}
+              </a>
             </td>
             <td
               style={{
@@ -79,6 +126,20 @@ const LectList = ({
               }}
             >
               {doDate}
+            </td>
+            <td
+              style={{
+                width: '120px',
+                color: '#bdbdbd'
+              }}
+            >
+              <Button
+                onClick={() => {
+                  deleteClickHandle(courseIdx);
+                }}
+              >
+                삭제
+              </Button>
             </td>
           </tr>
         </tbody>
