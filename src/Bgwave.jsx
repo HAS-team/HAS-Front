@@ -22,7 +22,7 @@ const Image1 = styled.img`
   object-fit: contain;
   top: 82%;
   transition: all 1s;
-  animation: ${waveAni} ease-in-out 10s infinite alternate;
+  animation: ${waveAni} linear 10s infinite alternate-reverse;
 `;
 
 const Image2 = styled.img`
@@ -32,7 +32,7 @@ const Image2 = styled.img`
   object-fit: contain;
   top: 86%;
   transition: all 1s;
-  animation: ${waveAni} ease-in-out 15s infinite alternate;
+  animation: ${waveAni} linear 15s infinite alternate-reverse;
 `;
 
 const ImageContain = styled.div`

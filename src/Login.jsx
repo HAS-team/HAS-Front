@@ -2,11 +2,21 @@ import React from 'react';
 import peopleImage from './Assets/people_img.png';
 import bgWave3 from './Assets/bg_wave_3.png';
 import logo from './Assets/logo1.png';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 // import { ReactComponent } from '*.svg';
 const DOMAIN = 'http://www.gsmboard.kr/';
+
+const slideRight = keyframes`
+  from {
+    transform: translateX(50%);
+    opacity: 0;
+  } to {
+    transform: translateX(0%); 
+    opacity: 1;
+  }
+`;
 
 const BGImage = styled.img`
   display: inline-block;
@@ -16,6 +26,8 @@ const BGImage = styled.img`
   object-fit: contain;
   left: 25%;
   top: 0%;
+  transition: all 1s;
+  animation: 1.4s ${slideRight} ease-out;
 `;
 
 const BGPeople = styled.img`
@@ -26,6 +38,8 @@ const BGPeople = styled.img`
   object-fit: contain;
   left: 44%;
   top: 34%;
+  transition: all 1s;
+  animation: 2.6s ${slideRight} ease-out;
 `;
 
 const BannerTxt = styled.p`
