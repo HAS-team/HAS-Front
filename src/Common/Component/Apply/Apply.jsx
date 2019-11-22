@@ -4,17 +4,18 @@ import * as S from './style';
 import axios from 'axios';
 import qs from 'query-string';
 
-const Apply = ({ location }) => {
+const CommonApply = ({ location }) => {
   const query = qs.parse(location);
   console.log(location);
   console.log(query);
   const [applyInfo, setApplyInfo] = useState({});
   useEffect(() => {
     const token = localStorage.getItem('token');
+    console.log(token);
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://www.gsmboard.kr/api/course/detail?course_id=${query}`,
+          `http://www.gsmboard.kr/api/course/detail?course_id=1`,
           {
             headers: {
               token: token
@@ -56,4 +57,4 @@ const Apply = ({ location }) => {
   );
 };
 
-export default Apply;
+export default CommonApply;

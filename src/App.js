@@ -4,9 +4,10 @@ import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Login from './Login.jsx';
-import Apply from './Common/Component/Apply/Apply';
+import Apply from './Common/Component/Apply/Apply.jsx';
 import LectContain from './Common/Component/LectContain';
 import Header from './Common/Component/Header/Header.jsx';
+import ApplyInput from './Admin/ApplyInput/ApplyInput';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -32,6 +33,7 @@ function App() {
             exact={true}
           />
           <Route path="/apply" component={Apply} exect={true} />
+          <Route path="/SubmitApply" component={ApplyInput} exact={true} />
           <Route path="/lect/:usermod" component={LectContain} exact={true} />
           <Route
             render={({ location }) => (
