@@ -13,7 +13,6 @@ import Bgwave from './Bgwave';
 function App() {
   return (
     <div style={{ height: '100%' }}>
-      {/* <h1>App page</h1> */}
       <GlobalStyle />
       <Bgwave />
       <BrowserRouter>
