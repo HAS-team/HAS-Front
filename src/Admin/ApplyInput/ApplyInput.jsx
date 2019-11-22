@@ -17,6 +17,14 @@ const ApplyInput = () => {
           }
         }
       );
+      console.log(res);
+      if (res.status === 200) {
+        window.location = '/lect/Admin';
+      } else if (res.status === 401) {
+        alert('에러가 발생햇어요 !ㅠㅠ');
+      } else if (res.status === 400) {
+        alert('asdfsdf');
+      }
     } catch (e) {
       console.log(e);
     }
@@ -32,13 +40,15 @@ const ApplyInput = () => {
   const [state, setState] = useState({
     name: '',
     sort: '',
-    capacity: '',
+    target: '',
+    capacity: 0,
     lectTime: '',
     operTime: '2019-11-22 12:05',
-    totalTime: '',
+    totalTime: 0,
+    openTime: '2019-10-11 12:00:00',
     closeTime: '',
     content: '',
-    teacher: '' 
+    teacher: ''
   });
   return (
     <div>
@@ -93,7 +103,12 @@ const ApplyInput = () => {
           </S.InfoContainer>
           <S.InfoContainer>
             <S.InfoName>담당선생님</S.InfoName>
-            <S.InfoContent placeholder="담당선생님을 입력하세요" />
+            <S.InfoContent
+              placeholder="담당선생님을 입력하세요"
+              name="teacher"
+              value={state.teacher}
+              onChange={handleChange}
+            />
           </S.InfoContainer>
           <S.InfoContainer>
             <S.InfoName>총시수</S.InfoName>
