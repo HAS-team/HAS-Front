@@ -4,9 +4,10 @@ import './App.css';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Login from './Login.jsx';
-import Apply from './Common/Component/Apply/Apply';
+import Apply from './Common/Component/Apply/Apply.jsx';
 import LectContain from './Common/Component/LectContain';
 import Header from './Common/Component/Header/Header.jsx';
+import ApplyInput from './Admin/ApplyInput/ApplyInput';
 import Bgwave from './Bgwave';
 
 function App() {
@@ -16,6 +17,13 @@ function App() {
       <Bgwave />
       <BrowserRouter>
         <Switch>
+          <Route
+            path="/"
+            render={() => <Login/>}
+            exact={true}
+          />
+          <Route path="/apply" component={Apply} exect={true} />
+          <Route path="/SubmitApply" component={ApplyInput} exact={true} />
           <Route path="/" render={() => <Login />} exact={true} />
           <Route path="/apply" component={Apply} exact={true} />
           <Route path="/lect/:usermod" component={LectContain} exact={true} />

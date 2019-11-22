@@ -5,12 +5,13 @@ import axios from 'axios';
 import queryString from 'query-string';
 import Header from '../Header/Header';
 
-const Apply = ({ location }) => {
+const CommonApply = ({ location }) => {
   const query = queryString.parse(location.search);
   console.log(query.courseIdx);
   const [applyInfo, setApplyInfo] = useState({});
   useEffect(() => {
     const token = localStorage.getItem('token');
+    console.log(token);
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -57,4 +58,4 @@ const Apply = ({ location }) => {
   );
 };
 
-export default Apply;
+export default CommonApply;
