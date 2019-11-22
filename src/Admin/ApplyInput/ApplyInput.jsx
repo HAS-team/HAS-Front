@@ -37,7 +37,8 @@ const ApplyInput = () => {
     operTime: '2019-11-22 12:05',
     totalTime: '',
     closeTime: '',
-    content: ''
+    content: '',
+    teacher: '' 
   });
   return (
     <div>
