@@ -20,7 +20,7 @@ function App() {
         <Switch>
           <Route
             path="/"
-            render={() => <Login yesAdmin={yesAdmin} />}
+            render={() => <Login/>}
             exact={true}
           />
           <Route path="/apply" component={Apply} exect={true} />

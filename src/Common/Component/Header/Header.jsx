@@ -2,27 +2,27 @@ import React, { useState, useCallback } from 'react';
 import * as S from './style';
 import Logo from '../../../Assets/Logo.png';
 
-const Header = ({ isAdmin }) => {
-  console.log('isAdmin: ' + isAdmin);
+// const Header = ({ isAdmin }) => {
+//   console.log('isAdmin: ' + isAdmin);
 
-  if (isAdmin) {
-    return (
-      <S.headerContainer>
-        <S.LogoIcon src={Logo} />
-        <strong>admin</strong>
-        <S.NavItem>학생 생성하기</S.NavItem>
-        <S.UserInfoText>안녕하세요</S.UserInfoText>
-      </S.headerContainer>
-    );
-  } else {
-    return (
-      <S.headerContainer>
-        <S.LogoIcon src={Logo} />
-        <S.NavItem>학생계정임</S.NavItem>
-        <S.UserInfoText>안녕하세요</S.UserInfoText>
-      </S.headerContainer>
-    );
-  }
+//   if (isAdmin) {
+//     return (
+//       <S.headerContainer>
+//         <S.LogoIcon src={Logo} />
+//         <strong>admin</strong>
+//         <S.NavItem>학생 생성하기</S.NavItem>
+//         <S.UserInfoText>안녕하세요</S.UserInfoText>
+//       </S.headerContainer>
+//     );
+//   } else {
+//     return (
+//       <S.headerContainer>
+//         <S.LogoIcon src={Logo} />
+//         <S.NavItem>학생계정임</S.NavItem>
+//         <S.UserInfoText>안녕하세요</S.UserInfoText>
+//       </S.headerContainer>
+//     );
+//   }
 const style = {
   fontSize: '1.7rem',
   position: 'absolute',
@@ -40,4 +40,5 @@ const Header = () => {
     </S.headerContainer>
   );
 };
+
 export default Header;

@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const SubmitBtn = styled.button`
   all: unset;
-  font-size: ;
+  font-size: 1.653rem;
+  color: #474bff;
 `;
 
 export const InfoHeader = styled.span`
   margin-left: 28.19rem;
   display: flex;
-  width: 35.5rem;
+  width: 55.5rem;
   justify-content: space-between;
   margin-top: 5rem;
   margin-bottom: 5rem;

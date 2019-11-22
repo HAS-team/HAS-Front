@@ -5,7 +5,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 import Header from '../Header/Header';
 
-const Apply = ({ location }) => {
+const CommonApply = ({ location }) => {
   const query = queryString.parse(location.search);
   console.log(query.courseIdx);
   const [applyInfo, setApplyInfo] = useState({});
