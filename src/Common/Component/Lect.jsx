@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
 
 const deleteClickHandle = courseIdx => {
@@ -32,13 +32,26 @@ const lectClickHandle = (e, courseIdx) => {
   window.location = '/apply?courseIdx=' + courseIdx;
 };
 
+const slideUp = keyframes`
+  from {
+    transform: translateY(50%);
+    opacity: 0;
+  } to {
+    transform: translateY(0%); 
+    opacity: 1;
+  }
+`;
+
 const Table = styled.table`
+  position: relative;
+  transition: all 1s;
   width: 100%;
   height: 5rem;
   border-bottom: 1px solid lightgray;
   border-collapse: collapse;
   margin-bottom: 2rem;
   text-align: center;
+  animation: 1s ${slideUp} ease-in-out;
 `;
 
 const Button = styled.button`
@@ -47,6 +60,12 @@ const Button = styled.button`
   padding: 5px;
   color: #707070;
   border-radius: 6px;
+  transition: all 0.8s;
+  &:hover {
+    transform: scale(1.1);
+    background-color: #707070;
+    color: #eeeeee;
+  }
 `;
 
 const LectList = ({

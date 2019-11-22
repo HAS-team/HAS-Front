@@ -1,22 +1,38 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import bgwave1 from './Assets/bg_wave_1.png';
 import bgwave2 from './Assets/bg_wave_1.png';
+
+const waveAni = keyframes`
+0% {
+  transform: translateX(0) translateZ(0) scaleY(1)
+}
+50% {
+  transform: translateX(-25%) translateZ(0) scaleY(0.55)
+}
+100% {
+  transform: translateX(-50%) translateZ(0) scaleY(1)
+}
+`;
 
 const Image1 = styled.img`
   display: inline-block;
   position: fixed;
-  width: 200%;
+  width: 300%;
   object-fit: contain;
-  top: 88%;
+  top: 82%;
+  transition: all 1s;
+  animation: ${waveAni} ease-in-out 10s infinite alternate;
 `;
 
 const Image2 = styled.img`
   display: inline-block;
   position: fixed;
-  width: 120%;
+  width: 220%;
   object-fit: contain;
-  top: 91%;
+  top: 86%;
+  transition: all 1s;
+  animation: ${waveAni} ease-in-out 15s infinite alternate;
 `;
 
 const ImageContain = styled.div`

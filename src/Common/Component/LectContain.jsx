@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Lect from './Lect';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useEffect } from 'react';
 import axios from 'axios';
 import qs from 'query-string';
@@ -8,45 +8,25 @@ import Header from './Header/Header';
 
 const DOMAIN = 'http://www.gsmboard.kr/';
 
+const slideUp = keyframes`
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  } to {
+    transform: translateY(0%); 
+    opacity: 1;
+  }
+`;
+
 const Table = styled.table`
+  position: relative;
   width: 100%;
   border-collapse: collapse;
   text-align: center;
   background-color: #f5f5f5;
+  transition: all 1s;
+  animation: 1s ${slideUp} ease-in-out;
 `;
-
-const dummys = [
-  {
-    askState: '신청중',
-    seme: '1학기',
-    lecName: '신은주와 함께하는 디자인교실',
-    teacher: '신은주',
-    grade: '1학년',
-    startDate: '2019-6-30',
-    endDate: '2019-7-20',
-    doDate: '화요일 7,8교시'
-  },
-  {
-    askState: '신청중',
-    seme: '1학기',
-    lecName: '신은주와 함께하는 디자인교실',
-    teacher: '신은주',
-    grade: '1학년',
-    startDate: '2019-6-30',
-    endDate: '2019-7-20',
-    doDate: '화요일 7,8교시'
-  },
-  {
-    askState: '신청중',
-    seme: '1학기',
-    lecName: '신은주와 함께하는 디자인교실',
-    teacher: '신은주',
-    grade: '1학년',
-    startDate: '2019-6-30',
-    endDate: '2019-7-20',
-    doDate: '화요일 7,8교시'
-  }
-];
 
 const containStyle = {
   height: '100%',
