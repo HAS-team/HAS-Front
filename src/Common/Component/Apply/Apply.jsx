@@ -29,7 +29,7 @@ const CommonApply = ({ location }) => {
       }
     };
     fetchData();
-  }, [query]);
+  }, []);
   return (
     <div>
       <Header />
